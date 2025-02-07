@@ -1,0 +1,29 @@
+//brute force = O(n^2)
+int maxProfit(vector<int>& prices) {
+    int maxProfit = 0;
+    int n = prices.size();
+    
+    // Consider each day as a potential buy day
+    for (int i = 0; i < n; i++) {
+        // For every buy day, check every day after it as a sell day
+        for (int j = i + 1; j < n; j++) {
+            int profit = prices[j] - prices[i];
+            // Update maxProfit if the current profit is higher
+            maxProfit = max(maxProfit, profit);
+        }
+    }
+    
+    return maxProfit;
+}
+----------------------------------------------------------------------------------
+//optimised = O(n) TC and O(1) SC
+
+    int maxProfit(vector<int>& prices) {
+        int minprice = prices[0];
+        int maxprofit = 0;
+        for(int i =1;i<prices.size();i++){
+            minprice = min(prices[i], minprice);
+            maxprofit = max(maxprofit, prices[i]-minprice);
+        }
+        return maxprofit;
+    }
