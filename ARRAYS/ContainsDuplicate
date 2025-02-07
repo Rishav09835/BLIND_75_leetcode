@@ -1,0 +1,14 @@
+ //brute force -O(n^2) check for all element if they appear twice. Method 1
+//sorting - O(nlogn) check current element with its adjacent whether they are equal or not. Method 2
+----------------------------------------------------------------------------------------------------------------------------------
+//optimised : set , TC = O(n) , SC= O(n) 
+
+bool containsDuplicate(vector<int>& nums) {
+       //unordered set = to see if an element repeats.
+        unordered_set<int> s;
+        for(auto &x : nums){
+            if(s.count(x)) return true;
+            s.insert(x);
+        }
+        return false;
+    }
