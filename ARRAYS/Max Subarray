@@ -1,0 +1,43 @@
+brute force = O(n^3) generate every possible subarray and calulate maxsum in each case;
+Use three nested loops:
+Outer loop: Picks the start index.
+Middle loop: Picks the end index.
+Inner loop: Computes the sum of elements from start to end.
+Update maxsum whenever a higher sum is found.
+-----------------------------------------------------------------------------------
+(better = O(n^2) TC, SC O(1) Avoids recomputing sums
+Use two nested loops. Outer loop picks the starting index, inner loop extends the subarray.
+Maintain currsum for each subarray and update maxsum )
+CODE:
+int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        int maxsum = INT_MIN;
+        for(int i=0;i<n;i++){
+            int currsum = 0;
+            for(int j=i;j<n;j++){
+               currsum += nums[j];
+
+                maxsum = max(maxsum,currsum);
+            }
+        }
+        return maxsum; 
+}
+-----------------------------------------------------------------------------------------------------------
+Optimised O(n)TC
+(Use a running sum (currsum) and track the maximum sum encountered.
+Traverse the array once, maintaining currsum.
+If currsum < 0, reset it to 0 (drop negative contribution).)
+CODE:
+    int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        int maxsum = INT_MIN;
+        int currsum = 0;
+        for(int i=0;i<n;i++){
+            currsum+=nums[i];
+            if(currsum>maxsum){
+                maxsum=currsum;
+            }
+            if(currsum<0) currsum = 0;
+        }
+        return maxsum;
+    }
