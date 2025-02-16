@@ -1,0 +1,14 @@
+    int getSum(int a, int b) {
+        //xor = to help sum bits where atleast one bit is 1 avoiding carries.
+        //and = to find carry.
+        //left shift<< = to add carry to correct place in next iteration.
+        //a will act as xor , b will act as carry.
+        int c=0;
+        while(b!=0){
+            c = a&b;
+            a = a^b;
+            b = (c<<1);
+        }
+        return a;
+    }
+TC = O(log(max(a,b))), SC = O(1)
