@@ -1,0 +1,13 @@
+brute = convert x to string and then solve it.
+-------------------------------------------------------------------------------
+bool isPalindrome(int x) {
+        long temp = 0;
+        int y = x;
+        while (x > 0) {
+            int a = x % 10;
+            temp = temp * 10 + a;
+            x /= 10;
+        }
+        cout << temp;
+        return y == temp;
+}
